@@ -18,7 +18,7 @@ class _LoginPageState extends State<LoginPage> {
 
   void Login() {
     Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => HomePage()));
+        context, MaterialPageRoute(builder: (context) =>  HomePage()));
   }
 
   @override
@@ -34,24 +34,24 @@ class _LoginPageState extends State<LoginPage> {
               size: 100,
               color: Theme.of(context).colorScheme.inversePrimary,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text("Food Delivery App",
                 style: TextStyle(
                     color: Theme.of(context).colorScheme.inversePrimary,
                     fontSize: 30)),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             MyTextField(
                 hintText: "Email",
                 obscureText: false,
                 controller: passwordcontroller),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             MyTextField(
                 hintText: "Password",
                 obscureText: true,
                 controller: passwordcontroller),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             MyButton(text: "Sign In", onTap: Login),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                     color: Theme.of(context).colorScheme.inversePrimary,
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 GestureDetector(
                   onTap: widget.onTap,
                   child: Text(

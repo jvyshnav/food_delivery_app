@@ -14,12 +14,12 @@ class _MySilverAppBarState extends State<MySilverAppBar> {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      expandedHeight: 340,
+      expandedHeight: 380,
       collapsedHeight: 120,
       floating: false,
       pinned: true,
       actions: [
-        IconButton(onPressed: () {}, icon: Icon(Icons.shopping_cart)),
+        IconButton(onPressed: () {}, icon: const Icon(Icons.shopping_cart)),
       ],
       backgroundColor: Theme.of(context).colorScheme.surface,
       foregroundColor: Theme.of(context).colorScheme.inversePrimary,
@@ -28,7 +28,7 @@ class _MySilverAppBarState extends State<MySilverAppBar> {
         background: widget.child,
         title: widget.title,
         centerTitle: true,
-        titlePadding: EdgeInsets.only(left: 0, right: 0, top: 0),
+        titlePadding: const EdgeInsets.only(left: 0, right: 0, top: 0),
         expandedTitleScale: 1,
       ),
     );

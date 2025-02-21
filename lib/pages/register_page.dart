@@ -29,29 +29,29 @@ class _RegisterPageState extends State<RegisterPage> {
               size: 100,
               color: Theme.of(context).colorScheme.inversePrimary,
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Text("Let's Create An Account For You",
                 style: TextStyle(
                     color: Theme.of(context).colorScheme.inversePrimary,
                     fontSize: 30)),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             MyTextField(
                 hintText: "Email",
                 obscureText: false,
                 controller: passwordController),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             MyTextField(
                 hintText: "Password",
                 obscureText: true,
                 controller: passwordController),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             MyTextField(
                 hintText: "ConfirmPassword",
                 obscureText: true,
                 controller: confirmPasswordcontroller),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             MyButton(text: "Sign Up", onTap: () {}),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -61,7 +61,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     color: Theme.of(context).colorScheme.inversePrimary,
                   ),
                 ),
-                SizedBox(width: 10),
+                const SizedBox(width: 10),
                 GestureDetector(
                   onTap: widget.onTap,
                   child: Text(
@@ -78,6 +78,5 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
       ),
     );
-    ;
   }
 }

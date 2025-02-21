@@ -39,12 +39,12 @@ class MyDrawer extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => SettingsPage(),
+                    builder: (context) => const SettingsPage(),
                   ));
             },
           ),
-          Spacer(),
-          MyDrawerTile(
+          const Spacer(),
+          const MyDrawerTile(
             text: "L O G O U T",
             icon: Icons.logout,
           ),

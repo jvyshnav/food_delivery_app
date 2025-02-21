@@ -33,7 +33,7 @@ class SettingsPage extends StatelessWidget {
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                // ✅ FIXED: Now listens to changes
+
                 Consumer<ThemeProvider>(
                   builder: (context, themeProvider, child) {
                     return CupertinoSwitch(
