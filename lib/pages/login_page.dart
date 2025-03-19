@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_app/components/my_button.dart';
 import 'package:food_delivery_app/components/mytextfield.dart';
 import 'package:food_delivery_app/pages/home_page.dart';
+import 'package:food_delivery_app/services/auth/auth_service.dart';
 
 class LoginPage extends StatefulWidget {
   final void Function()? onTap;
+
   const LoginPage({super.key, this.onTap});
 
   @override
@@ -16,9 +18,31 @@ class _LoginPageState extends State<LoginPage> {
 
   final TextEditingController passwordcontroller = TextEditingController();
 
-  void Login() {
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) =>  HomePage()));
+  void login() async {
+    final _authService = AuthService();
+    //try signing in
+    try {
+      await _authService.signInWithEmailPassword(
+          emailcontroller.text, passwordcontroller.text);
+    } catch (e) {
+      showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+          title: Text(e.toString()),
+        ),
+      );
+    }
+
+  }
+
+  //forgot password
+  void forgotpw() {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text("user tapped on forgot password"),
+      ),
+    );
   }
 
   @override
@@ -43,14 +67,14 @@ class _LoginPageState extends State<LoginPage> {
             MyTextField(
                 hintText: "Email",
                 obscureText: false,
-                controller: passwordcontroller),
+                controller: emailcontroller),
             const SizedBox(height: 20),
             MyTextField(
                 hintText: "Password",
                 obscureText: true,
                 controller: passwordcontroller),
             const SizedBox(height: 20),
-            MyButton(text: "Sign In", onTap: Login),
+            MyButton(text: "Sign In", onTap: login),
             const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

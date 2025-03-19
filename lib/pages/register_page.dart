@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/components/my_button.dart';
 import 'package:food_delivery_app/components/mytextfield.dart';
+import 'package:food_delivery_app/services/auth/auth_service.dart';
 
 class RegisterPage extends StatefulWidget {
   final void Function()? onTap;
+
   const RegisterPage({super.key, this.onTap});
 
   @override
@@ -15,6 +17,37 @@ class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController passwordController = TextEditingController();
   final TextEditingController confirmPasswordcontroller =
       TextEditingController();
+
+  //register method
+  void register() async {
+    //get auth service
+    final _authService = AuthService();
+    //check if password match
+    if (passwordController.text == confirmPasswordcontroller.text) {
+      try {
+        await _authService.signUpWithEmailPassword(
+            emailController.text, passwordController.text);
+      }
+      //display any errors
+      catch (e) {
+        showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+            title: Text(e.toString()),
+          ),
+        );
+      }
+    }
+    //if password don't match
+    else{
+      showDialog(
+        context: context,
+        builder: (context) => const AlertDialog(
+          title: Text("password doesn't match"),
+        ),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +71,7 @@ class _RegisterPageState extends State<RegisterPage> {
             MyTextField(
                 hintText: "Email",
                 obscureText: false,
-                controller: passwordController),
+                controller: emailController),
             const SizedBox(height: 20),
             MyTextField(
                 hintText: "Password",
@@ -50,7 +83,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 obscureText: true,
                 controller: confirmPasswordcontroller),
             const SizedBox(height: 20),
-            MyButton(text: "Sign Up", onTap: () {}),
+            MyButton(text: "Sign Up", onTap:register),
             const SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

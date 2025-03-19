@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/pages/cart_page.dart';
 
 class MySilverAppBar extends StatefulWidget {
   const MySilverAppBar({super.key, required this.child, required this.title});
@@ -19,7 +20,15 @@ class _MySilverAppBarState extends State<MySilverAppBar> {
       floating: false,
       pinned: true,
       actions: [
-        IconButton(onPressed: () {}, icon: const Icon(Icons.shopping_cart)),
+        IconButton(
+            onPressed: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) =>  CartPage(),
+                  ));
+            },
+            icon: const Icon(Icons.shopping_cart)),
       ],
       backgroundColor: Theme.of(context).colorScheme.surface,
       foregroundColor: Theme.of(context).colorScheme.inversePrimary,
